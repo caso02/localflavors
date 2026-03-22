@@ -29,9 +29,11 @@ const placesApiKey = defineSecret("GOOGLE_PLACES_API_KEY");
 
 export const detectRestaurant = onCall(
   {
+    region: "europe-west6",
     secrets: [placesApiKey],
     timeoutSeconds: 15,
     memory: "256MiB",
+    invoker: "public",
   },
   async (request) => {
     const data = request.data as DetectRestaurantRequest;
@@ -73,9 +75,11 @@ export const detectRestaurant = onCall(
 
 export const searchNearbyRestaurants = onCall(
   {
+    region: "europe-west6",
     secrets: [placesApiKey],
     timeoutSeconds: 15,
     memory: "256MiB",
+    invoker: "public",
   },
   async (request) => {
     const data = request.data as SearchRestaurantsRequest;
@@ -108,9 +112,11 @@ export const searchNearbyRestaurants = onCall(
 
 export const analyzeMenu = onCall(
   {
+    region: "europe-west6",
     secrets: [geminiApiKey, placesApiKey],
-    timeoutSeconds: 300, // OCR + Grounding can take time
+    timeoutSeconds: 300,
     memory: "512MiB",
+    invoker: "public",
   },
   async (request) => {
     const data = request.data as AnalyzeMenuRequest;

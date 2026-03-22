@@ -19,6 +19,9 @@
 		399936DC688910BEF1AB5DF4 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A8ED8AD89542D6F649337 /* CameraService.swift */; };
 		3FD6792495246477D9E30293 /* ResultsOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F526D8C2E69AEFE5AED2F4F /* ResultsOverviewView.swift */; };
 		4ECAC8119F0EEB825D110B04 /* ScanSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77B3DA0817BB1A8D5B54F8A /* ScanSession.swift */; };
+		AA1111111111111111111111 /* ScanHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2222222222222222222222 /* ScanHistoryService.swift */; };
+		AA3333333333333333333333 /* ScanHistorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4444444444444444444444 /* ScanHistorySheet.swift */; };
+		BB1111111111111111111111 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2222222222222222222222 /* OnboardingView.swift */; };
 		5E4A98605DA21B79F2310E55 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF24482DB44CA086916650 /* HapticsService.swift */; };
 		826B462E043C90F93DA7C1DE /* RestaurantBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A2145473BC59A95ACE9E0 /* RestaurantBannerView.swift */; };
 		9663506207FFC881D746C562 /* PageThumbnailStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604689D4614EF1D73135138 /* PageThumbnailStrip.swift */; };
@@ -59,6 +62,9 @@
 		F37732C2F6DDCB1C1C12F32F /* RecommendationBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationBadge.swift; sourceTree = "<group>"; };
 		F55E89BE469D46C937ED969D /* RestaurantPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantPickerSheet.swift; sourceTree = "<group>"; };
 		F77B3DA0817BB1A8D5B54F8A /* ScanSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSession.swift; sourceTree = "<group>"; };
+		AA2222222222222222222222 /* ScanHistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistoryService.swift; sourceTree = "<group>"; };
+		AA4444444444444444444444 /* ScanHistorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistorySheet.swift; sourceTree = "<group>"; };
+		BB2222222222222222222222 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F7F663FD305D41A229932830 /* AnalysisLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisLoadingView.swift; sourceTree = "<group>"; };
 		FA5E555D41E67833CE22E17C /* LocalFlavorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFlavorsApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +125,7 @@
 				AF1A8ED8AD89542D6F649337 /* CameraService.swift */,
 				8AFF24482DB44CA086916650 /* HapticsService.swift */,
 				C85669BFF66F9D8D76FA6EC2 /* LocationService.swift */,
+				AA2222222222222222222222 /* ScanHistoryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -144,12 +151,30 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		BB3333333333333333333333 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BB2222222222222222222222 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AA5555555555555555555555 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				AA4444444444444444444444 /* ScanHistorySheet.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		B9D47A9762B01A216A51D268 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				28E8F07E67C6BACD03C33F26 /* Analysis */,
 				9B3418BFE3867C0E50DC0C2C /* Camera */,
 				1EA68445BA410EDDCEA32CE7 /* Common */,
+				AA5555555555555555555555 /* History */,
+				BB3333333333333333333333 /* Onboarding */,
 				F8CFB922D230BA95E24D10A5 /* Results */,
 			);
 			path = Views;
@@ -279,6 +304,9 @@
 				D9B2A6D6A8AD8370084C774E /* RestaurantPickerSheet.swift in Sources */,
 				3FD6792495246477D9E30293 /* ResultsOverviewView.swift in Sources */,
 				4ECAC8119F0EEB825D110B04 /* ScanSession.swift in Sources */,
+				AA1111111111111111111111 /* ScanHistoryService.swift in Sources */,
+				AA3333333333333333333333 /* ScanHistorySheet.swift in Sources */,
+				BB1111111111111111111111 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

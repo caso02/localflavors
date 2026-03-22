@@ -5,35 +5,39 @@ import FirebaseFunctions
 @main
 struct LocalFlavorsApp: App {
     @StateObject private var appState = AppState()
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
 
     init() {
         FirebaseApp.configure()
 
-        // Use local emulator for development
-        // Use Mac's local IP for real device, 127.0.0.1 for Simulator
-        #if DEBUG
-        Functions.functions().useEmulator(withHost: "192.168.1.61", port: 5001)
-        #endif
+        // Toggle: Comment out for CLOUD, uncomment for LOCAL emulator
+        // Functions.functions().useEmulator(withHost: "192.168.1.61", port: 5001)
     }
 
     var body: some Scene {
         WindowGroup {
             Group {
-                switch appState.currentScreen {
-                case .camera:
-                    CameraView()
-                case .analyzing:
-                    AnalysisLoadingView(capturedImage: appState.capturedPages.first)
-                case .results:
-                    if let result = appState.analysisResult {
-                        ResultsOverviewView(result: result) {
-                            appState.reset()
-                        }
-                    } else {
+                if !hasSeenOnboarding {
+                    OnboardingView()
+                        .transition(.opacity)
+                } else {
+                    switch appState.currentScreen {
+                    case .camera:
                         CameraView()
+                    case .analyzing:
+                        AnalysisLoadingView(capturedImage: appState.capturedPages.first)
+                    case .results:
+                        if let result = appState.analysisResult {
+                            ResultsOverviewView(result: result) {
+                                appState.reset()
+                            }
+                        } else {
+                            CameraView()
+                        }
                     }
                 }
             }
+            .animation(.easeInOut(duration: 0.4), value: hasSeenOnboarding)
             .environmentObject(appState)
         }
     }

@@ -9,6 +9,7 @@ struct CameraView: View {
     @StateObject private var scanSession = ScanSession()
     @State private var showRestaurantPicker = false
     @State private var showRestaurantRequired = false
+    @State private var showHistory = false
     @State private var isCapturing = false
     @State private var showPhotoPicker = false
     @State private var selectedPhotoItems: [PhotosPickerItem] = []
@@ -63,6 +64,12 @@ struct CameraView: View {
                 }
             )
         }
+        .sheet(isPresented: $showHistory) {
+            ScanHistorySheet { result in
+                appState.analysisResult = result
+                appState.currentScreen = .results
+            }
+        }
         .onAppear {
             cameraService.startSession()
             locationService.requestPermission()
@@ -87,10 +94,22 @@ struct CameraView: View {
 
     private var portraitOverlay: some View {
         VStack {
-            RestaurantBannerView(
-                restaurant: appState.detectedRestaurant,
-                onTap: { showRestaurantPicker = true }
-            )
+            HStack(alignment: .center, spacing: 8) {
+                RestaurantBannerView(
+                    restaurant: appState.detectedRestaurant,
+                    onTap: { showRestaurantPicker = true }
+                )
+
+                // History button
+                Button { showHistory = true } label: {
+                    Image(systemName: "clock.arrow.circlepath")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.8))
+                        .frame(width: 40, height: 40)
+                        .background(.black.opacity(0.5), in: Circle())
+                }
+                .padding(.trailing, 16)
+            }
             .padding(.top, 8)
 
             Spacer()
@@ -367,6 +386,7 @@ struct CameraView: View {
             print("[LocalFlavors] Analysis complete! \(result.allDishes.count) dishes found")
             appState.analysisResult = result
             appState.currentScreen = .results
+            ScanHistoryService.shared.save(result)
             HapticsService.success()
         } catch {
             print("[LocalFlavors] analyzeMenu ERROR: \(error)")

@@ -2,7 +2,7 @@ import Foundation
 import FirebaseFunctions
 
 final class APIService {
-    private lazy var functions = Functions.functions()
+    private lazy var functions = Functions.functions(region: "europe-west6")
 
     // MARK: - Restaurant Detection
 

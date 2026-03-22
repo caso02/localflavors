@@ -50,6 +50,21 @@ struct DishAnalysis: Identifiable, Codable {
         case category, courseType, baseGroup, dietary
     }
 
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(price, forKey: .price)
+        try container.encode(score, forKey: .score)
+        try container.encode(mentions, forKey: .mentions)
+        try container.encode(sentiment, forKey: .sentiment)
+        try container.encode(summary, forKey: .summary)
+        try container.encodeIfPresent(category, forKey: .category)
+        try container.encodeIfPresent(courseType, forKey: .courseType)
+        try container.encodeIfPresent(baseGroup, forKey: .baseGroup)
+        try container.encodeIfPresent(dietary, forKey: .dietary)
+    }
+
     /// Parsed numeric price value (e.g. "CHF 18.50" → 18.50)
     var priceValue: Double? {
         guard let price else { return nil }
