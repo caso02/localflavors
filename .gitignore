@@ -1,0 +1,54 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+Packages/
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+
+# Firebase
+GoogleService-Info.plist
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Firebase functions
+firebase/functions/node_modules/
+firebase/functions/lib/
+
+# Environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# Firebase emulator
+firebase/functions/.secret.*
+firebase/.firebase/
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Claude
+.claude/
+
+# Secrets / credentials
+*.key
+*.pem
+serviceAccount*.json
