@@ -11,6 +11,7 @@
 		05EDD6700DC02CE81397711B /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B7F0040ACE1DF6B602222 /* Restaurant.swift */; };
 		08455EB49C245171AEBAD310 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D694DED5438552A4FD93320 /* CameraView.swift */; };
 		0954DB654B9AF8E9FFDB0B0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDDB168832DC99B0D22A7243 /* GoogleService-Info.plist */; };
+		CC1111111111111111111111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2222222222222222222222 /* Assets.xcassets */; };
 		14001A736411049E48B7361B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71477FF649804E3D1894F95 /* AppState.swift */; };
 		222FA5FDC40F07847B713762 /* DishAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E599C91D54DA4A8CA12361 /* DishAnalysis.swift */; };
 		2A8F584E801D8699AEF49DD6 /* DishDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9924DD817ADA7D0C726269 /* DishDetailSheet.swift */; };
@@ -22,6 +23,7 @@
 		AA1111111111111111111111 /* ScanHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2222222222222222222222 /* ScanHistoryService.swift */; };
 		AA3333333333333333333333 /* ScanHistorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4444444444444444444444 /* ScanHistorySheet.swift */; };
 		BB1111111111111111111111 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2222222222222222222222 /* OnboardingView.swift */; };
+		DD1111111111111111111111 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2222222222222222222222 /* NetworkMonitor.swift */; };
 		5E4A98605DA21B79F2310E55 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF24482DB44CA086916650 /* HapticsService.swift */; };
 		826B462E043C90F93DA7C1DE /* RestaurantBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A2145473BC59A95ACE9E0 /* RestaurantBannerView.swift */; };
 		9663506207FFC881D746C562 /* PageThumbnailStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604689D4614EF1D73135138 /* PageThumbnailStrip.swift */; };
@@ -62,6 +64,8 @@
 		F37732C2F6DDCB1C1C12F32F /* RecommendationBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationBadge.swift; sourceTree = "<group>"; };
 		F55E89BE469D46C937ED969D /* RestaurantPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantPickerSheet.swift; sourceTree = "<group>"; };
 		F77B3DA0817BB1A8D5B54F8A /* ScanSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSession.swift; sourceTree = "<group>"; };
+		CC2222222222222222222222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD2222222222222222222222 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		AA2222222222222222222222 /* ScanHistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistoryService.swift; sourceTree = "<group>"; };
 		AA4444444444444444444444 /* ScanHistorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistorySheet.swift; sourceTree = "<group>"; };
 		BB2222222222222222222222 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				AF1A8ED8AD89542D6F649337 /* CameraService.swift */,
 				8AFF24482DB44CA086916650 /* HapticsService.swift */,
 				C85669BFF66F9D8D76FA6EC2 /* LocationService.swift */,
+				DD2222222222222222222222 /* NetworkMonitor.swift */,
 				AA2222222222222222222222 /* ScanHistoryService.swift */,
 			);
 			path = Services;
@@ -149,6 +154,14 @@
 				FA5E555D41E67833CE22E17C /* LocalFlavorsApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		CC3333333333333333333333 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CC2222222222222222222222 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BB3333333333333333333333 /* Onboarding */ = {
@@ -187,6 +200,7 @@
 				20954120980B9B56BF87EEF9 /* Info.plist */,
 				A70B341D847F5503979E9DB2 /* App */,
 				A50B5906376B71D50A5F5AE2 /* Models */,
+				CC3333333333333333333333 /* Resources */,
 				9FB38D8A84BD42F472414127 /* Services */,
 				B9D47A9762B01A216A51D268 /* Views */,
 			);
@@ -271,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0954DB654B9AF8E9FFDB0B0B /* GoogleService-Info.plist in Resources */,
+				CC1111111111111111111111 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +322,7 @@
 				AA1111111111111111111111 /* ScanHistoryService.swift in Sources */,
 				AA3333333333333333333333 /* ScanHistorySheet.swift in Sources */,
 				BB1111111111111111111111 /* OnboardingView.swift in Sources */,
+				DD1111111111111111111111 /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

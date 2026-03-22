@@ -7,9 +7,11 @@ struct CameraView: View {
     @StateObject private var cameraService = CameraService()
     @StateObject private var locationService = LocationService()
     @StateObject private var scanSession = ScanSession()
+    @ObservedObject private var network = NetworkMonitor.shared
     @State private var showRestaurantPicker = false
     @State private var showRestaurantRequired = false
     @State private var showHistory = false
+    @State private var showOfflineAlert = false
     @State private var isCapturing = false
     @State private var showPhotoPicker = false
     @State private var selectedPhotoItems: [PhotosPickerItem] = []
@@ -68,6 +70,28 @@ struct CameraView: View {
             ScanHistorySheet { result in
                 appState.analysisResult = result
                 appState.currentScreen = .results
+            }
+        }
+        .alert("Keine Internetverbindung", isPresented: $showOfflineAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Für die Analyse wird eine Internetverbindung benötigt. Bitte verbinde dich mit dem WLAN oder aktiviere mobile Daten.")
+        }
+        .overlay(alignment: .top) {
+            if !network.isConnected {
+                HStack(spacing: 6) {
+                    Image(systemName: "wifi.slash")
+                        .font(.caption.bold())
+                    Text("Offline")
+                        .font(.caption.bold())
+                }
+                .foregroundStyle(.white)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(.red, in: Capsule())
+                .padding(.top, 60)
+                .transition(.move(edge: .top).combined(with: .opacity))
+                .animation(.easeInOut, value: network.isConnected)
             }
         }
         .onAppear {
@@ -360,6 +384,11 @@ struct CameraView: View {
 
     private func startAnalysis() async {
         print("[LocalFlavors] startAnalysis called")
+        guard network.isConnected else {
+            showOfflineAlert = true
+            HapticsService.error()
+            return
+        }
         guard let restaurant = appState.detectedRestaurant else {
             print("[LocalFlavors] No restaurant detected, opening picker")
             showRestaurantPicker = true
