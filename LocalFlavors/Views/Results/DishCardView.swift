@@ -57,7 +57,7 @@ struct DishCardView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "person.2.fill")
                         .font(.caption2)
-                    Text("\(formattedMentions(dish.mentions))+ Gäste empfehlen dies")
+                    Text(String(localized: "dish.guestsRecommend \(formattedMentions(dish.mentions))"))
                         .font(.caption2)
                 }
                 .foregroundStyle(scoreColor.opacity(0.8))
@@ -95,7 +95,7 @@ struct DishCardView: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
                 if dish.mentions > 0 {
-                    Text("\(formattedMentions(dish.mentions))+ negative Erwähnungen")
+                    Text(String(localized: "dish.negativeMentions \(formattedMentions(dish.mentions))"))
                         .font(.caption2)
                         .foregroundStyle(.red.opacity(0.7))
                 }
@@ -126,7 +126,7 @@ struct DishCardView: View {
                     dietaryBadges
                 }
                 if dish.mentions > 0 {
-                    Text("\(formattedMentions(dish.mentions))+ erwähnt")
+                    Text(String(localized: "dish.mentioned \(formattedMentions(dish.mentions))"))
                         .font(.caption2)
                         .foregroundStyle(.tertiary)
                 }
@@ -221,7 +221,7 @@ struct DishCardView: View {
             Spacer()
 
             if dish.mentions > 0 {
-                Text("\(formattedMentions(dish.mentions))+ erwähnt")
+                Text(String(localized: "dish.mentioned \(formattedMentions(dish.mentions))"))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
             }
@@ -234,7 +234,7 @@ struct DishCardView: View {
         HStack(spacing: 2) {
             Image(systemName: "banknote.fill")
                 .font(.system(size: 8))
-            Text("Top Wert")
+            Text(String(localized: "dish.topScore"))
                 .font(.system(size: 9, weight: .bold))
         }
         .padding(.horizontal, 5)

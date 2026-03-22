@@ -10,7 +10,7 @@ struct ErrorView: View {
                 .font(.system(size: 44))
                 .foregroundStyle(.orange)
 
-            Text("Etwas ist schiefgelaufen")
+            Text(String(localized: "error.title"))
                 .font(.title3.bold())
 
             Text(message)
@@ -19,7 +19,7 @@ struct ErrorView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
 
-            Button("Erneut versuchen", action: onRetry)
+            Button(String(localized: "error.retry"), action: onRetry)
                 .buttonStyle(.borderedProminent)
                 .padding(.top, 8)
         }

@@ -20,17 +20,17 @@ struct AnalysisLoadingView: View {
 
         var title: String {
             switch self {
-            case .ocr: return "Speisekarte wird erkannt"
-            case .reviews: return "Bewertungen werden durchsucht"
-            case .scoring: return "Empfehlungen werden erstellt"
+            case .ocr: return String(localized: "loading.ocr.title")
+            case .reviews: return String(localized: "loading.reviews.title")
+            case .scoring: return String(localized: "loading.scoring.title")
             }
         }
 
         var subtitle: String {
             switch self {
-            case .ocr: return "Gerichte und Preise werden aus dem Foto extrahiert"
-            case .reviews: return "Google Reviews und Online-Quellen werden analysiert"
-            case .scoring: return "Gerichte werden bewertet und sortiert"
+            case .ocr: return String(localized: "loading.ocr.subtitle")
+            case .reviews: return String(localized: "loading.reviews.subtitle")
+            case .scoring: return String(localized: "loading.scoring.subtitle")
             }
         }
     }

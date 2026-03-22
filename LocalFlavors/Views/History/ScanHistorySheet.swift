@@ -15,15 +15,15 @@ struct ScanHistorySheet: View {
                     historyList
                 }
             }
-            .navigationTitle("Letzte Scans")
+            .navigationTitle(String(localized: "history.title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Schliessen") { dismiss() }
+                    Button(String(localized: "history.close")) { dismiss() }
                 }
                 if !entries.isEmpty {
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("Alle löschen", role: .destructive) {
+                        Button(String(localized: "history.deleteAll"), role: .destructive) {
                             ScanHistoryService.shared.clearAll()
                             withAnimation { entries = [] }
                         }
@@ -45,10 +45,10 @@ struct ScanHistorySheet: View {
             Image(systemName: "clock.arrow.circlepath")
                 .font(.system(size: 48))
                 .foregroundStyle(.secondary)
-            Text("Noch keine Scans")
+            Text(String(localized: "history.empty.title"))
                 .font(.title3.bold())
                 .foregroundStyle(.primary)
-            Text("Deine gescannten Speisekarten erscheinen hier.")
+            Text(String(localized: "history.empty.subtitle"))
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -84,7 +84,6 @@ struct ScanHistorySheet: View {
 
     private func historyRow(_ entry: ScanHistoryEntry) -> some View {
         HStack(spacing: 14) {
-            // Restaurant icon
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(.orange.opacity(0.15))
@@ -95,13 +94,11 @@ struct ScanHistorySheet: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                // Restaurant name
                 Text(entry.restaurantName)
                     .font(.subheadline.bold())
                     .foregroundStyle(.primary)
                     .lineLimit(1)
 
-                // Date + dish count
                 HStack(spacing: 6) {
                     Text(entry.relativeDate)
                         .font(.caption)
@@ -110,12 +107,11 @@ struct ScanHistorySheet: View {
                     Text("·")
                         .foregroundStyle(.secondary)
 
-                    Text("\(entry.dishCount) Gerichte")
+                    Text(String(localized: "history.dishes \(entry.dishCount)"))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
 
-                // Top picks preview
                 if !entry.topPickNames.isEmpty {
                     HStack(spacing: 4) {
                         Image(systemName: "star.fill")
@@ -131,7 +127,6 @@ struct ScanHistorySheet: View {
 
             Spacer()
 
-            // Rating badge
             if let rating = entry.restaurantRating {
                 VStack(spacing: 2) {
                     Text(String(format: "%.1f", rating))

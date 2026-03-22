@@ -27,10 +27,10 @@ struct RecommendationBadge: View {
 
     private var text: String {
         switch sentiment {
-        case .positive: "Must Try"
-        case .mixed: "Solide"
-        case .negative: "Meiden"
-        case .unmentioned: "Keine Daten"
+        case .positive: String(localized: "badge.mustTry")
+        case .mixed: String(localized: "badge.solid")
+        case .negative: String(localized: "badge.avoid")
+        case .unmentioned: String(localized: "badge.noData")
         }
     }
 

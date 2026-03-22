@@ -10,11 +10,17 @@ struct ResultsOverviewView: View {
     @State private var selectedFilter: DietaryFilter = .all
     @State private var revealedCards: Set<String> = []
 
-    enum DietaryFilter: String, CaseIterable {
-        case all = "Alle"
-        case vegetarian = "Vegetarisch"
-        case vegan = "Vegan"
-        case glutenFree = "Glutenfrei"
+    enum DietaryFilter: CaseIterable {
+        case all, vegetarian, vegan, glutenFree
+
+        var label: String {
+            switch self {
+            case .all: String(localized: "results.filter.all")
+            case .vegetarian: String(localized: "results.filter.vegetarian")
+            case .vegan: String(localized: "results.filter.vegan")
+            case .glutenFree: String(localized: "results.filter.glutenFree")
+            }
+        }
 
         var filterKey: String? {
             switch self {
@@ -187,7 +193,7 @@ struct ResultsOverviewView: View {
                             .font(.subheadline.bold())
                     }
                     if let total = result.restaurant.totalRatings {
-                        Text("\(total) Bewertungen")
+                        Text(String(localized: "results.reviews \(total)"))
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
@@ -204,7 +210,7 @@ struct ResultsOverviewView: View {
             summaryItem(
                 icon: "menucard",
                 value: "\(result.allDishes.count)",
-                label: "Gerichte"
+                label: String(localized: "results.dishes")
             )
             summaryDivider
             summaryItem(
@@ -216,7 +222,7 @@ struct ResultsOverviewView: View {
             summaryItem(
                 icon: "flame.fill",
                 value: "\(result.topPicks.count)",
-                label: "Empfehlungen"
+                label: String(localized: "results.recommendations")
             )
         }
         .padding(.vertical, 12)
@@ -264,7 +270,7 @@ struct ResultsOverviewView: View {
                         HStack(spacing: 4) {
                             Image(systemName: filter.icon)
                                 .font(.caption2)
-                            Text(filter.rawValue)
+                            Text(filter.label)
                                 .font(.caption.bold())
                             if filter != .all {
                                 Text("(\(count))")
@@ -289,7 +295,7 @@ struct ResultsOverviewView: View {
 
     private var topPicksSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Label("Unsere Empfehlungen", systemImage: "flame.fill")
+            Label(String(localized: "results.section.topPicks"), systemImage: "flame.fill")
                 .font(.headline)
                 .foregroundStyle(.orange)
                 .padding(.horizontal)
@@ -324,7 +330,7 @@ struct ResultsOverviewView: View {
 
     private var bestValueSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Top Preis-Leistung", systemImage: "banknote.fill")
+            Label(String(localized: "results.section.bestValue"), systemImage: "banknote.fill")
                 .font(.headline)
                 .foregroundStyle(.green)
                 .padding(.horizontal)
@@ -341,7 +347,7 @@ struct ResultsOverviewView: View {
 
     private var avoidSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Lieber nicht", systemImage: "hand.thumbsdown.fill")
+            Label(String(localized: "results.section.avoid"), systemImage: "hand.thumbsdown.fill")
                 .font(.headline)
                 .foregroundStyle(.red)
                 .padding(.horizontal)
@@ -358,7 +364,7 @@ struct ResultsOverviewView: View {
 
     private var allDishesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Alle Gerichte")
+            Text(String(localized: "results.section.allDishes"))
                 .font(.headline)
                 .padding(.horizontal)
 
@@ -381,7 +387,7 @@ struct ResultsOverviewView: View {
                                 .frame(width: 12)
                             Image(systemName: "questionmark.circle")
                                 .font(.caption)
-                            Text("Nicht erwähnt (\(unmentionedDishes.count))")
+                            Text(String(localized: "results.section.unmentioned \(unmentionedDishes.count)"))
                                 .font(.subheadline.bold())
                             Spacer()
                         }
@@ -442,22 +448,22 @@ struct ResultsOverviewView: View {
 
     private func topPickLabel(for type: String) -> String {
         switch type {
-        case "starter": return "Beste Vorspeisen"
-        case "main": return "Beste Hauptgerichte"
-        case "dessert": return "Beste Desserts"
-        default: return "Empfehlungen"
+        case "starter": return String(localized: "results.course.bestStarters")
+        case "main": return String(localized: "results.course.bestMains")
+        case "dessert": return String(localized: "results.course.bestDesserts")
+        default: return String(localized: "results.course.bestOther")
         }
     }
 
     private func courseLabel(for type: String) -> String {
         switch type {
-        case "starter": return "Vorspeisen"
-        case "main": return "Hauptspeisen"
-        case "dessert": return "Desserts"
-        case "drink": return "Getränke"
-        case "side": return "Beilagen"
-        case "menu": return "Menüs"
-        default: return "Sonstiges"
+        case "starter": return String(localized: "results.course.starters")
+        case "main": return String(localized: "results.course.mains")
+        case "dessert": return String(localized: "results.course.desserts")
+        case "drink": return String(localized: "results.course.drinks")
+        case "side": return String(localized: "results.course.sides")
+        case "menu": return String(localized: "results.course.menus")
+        default: return String(localized: "results.course.other")
         }
     }
 

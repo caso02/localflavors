@@ -24,6 +24,7 @@
 		AA3333333333333333333333 /* ScanHistorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4444444444444444444444 /* ScanHistorySheet.swift */; };
 		BB1111111111111111111111 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2222222222222222222222 /* OnboardingView.swift */; };
 		DD1111111111111111111111 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2222222222222222222222 /* NetworkMonitor.swift */; };
+		EE1111111111111111111111 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE2222222222222222222222 /* Localizable.strings */; };
 		5E4A98605DA21B79F2310E55 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF24482DB44CA086916650 /* HapticsService.swift */; };
 		826B462E043C90F93DA7C1DE /* RestaurantBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A2145473BC59A95ACE9E0 /* RestaurantBannerView.swift */; };
 		9663506207FFC881D746C562 /* PageThumbnailStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604689D4614EF1D73135138 /* PageThumbnailStrip.swift */; };
@@ -66,6 +67,8 @@
 		F77B3DA0817BB1A8D5B54F8A /* ScanSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSession.swift; sourceTree = "<group>"; };
 		CC2222222222222222222222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD2222222222222222222222 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		EE3333333333333333333333 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EE4444444444444444444444 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AA2222222222222222222222 /* ScanHistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistoryService.swift; sourceTree = "<group>"; };
 		AA4444444444444444444444 /* ScanHistorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanHistorySheet.swift; sourceTree = "<group>"; };
 		BB2222222222222222222222 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2222222222222222222222 /* Assets.xcassets */,
+				EE2222222222222222222222 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -265,6 +269,7 @@
 			knownRegions = (
 				Base,
 				en,
+				de,
 			);
 			mainGroup = E6D861D66A60C0A95AF58474;
 			minimizedProjectReferenceProxies = 1;
@@ -286,10 +291,23 @@
 			files = (
 				0954DB654B9AF8E9FFDB0B0B /* GoogleService-Info.plist in Resources */,
 				CC1111111111111111111111 /* Assets.xcassets in Resources */,
+				EE1111111111111111111111 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE2222222222222222222222 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE3333333333333333333333 /* en */,
+				EE4444444444444444444444 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CB35583138AC58D8F9979C1 /* Sources */ = {

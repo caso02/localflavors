@@ -78,7 +78,7 @@ struct DishDetailSheet: View {
                                     Text("\(dish.score)")
                                         .font(.system(size: 32, weight: .bold, design: .rounded))
                                         .foregroundStyle(scoreColor)
-                                    Text("von 10")
+                                    Text(String(localized: "dish.outOf10"))
                                         .font(.caption2)
                                         .foregroundStyle(.secondary)
                                 }
@@ -91,7 +91,7 @@ struct DishDetailSheet: View {
                                         Image(systemName: "person.2.fill")
                                             .font(.caption)
                                             .foregroundStyle(scoreColor)
-                                        Text("\(formattedMentions(dish.mentions))+ Gäste erwähnen dies")
+                                        Text(String(localized: "dish.guestsMention \(formattedMentions(dish.mentions))"))
                                             .font(.subheadline)
                                     }
                                 }
@@ -118,11 +118,11 @@ struct DishDetailSheet: View {
                             Image(systemName: "banknote.fill")
                                 .foregroundStyle(.green)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Gutes Preis-Leistungs-Verhältnis")
+                                Text(String(localized: "dish.goodValue"))
                                     .font(.subheadline.bold())
                                     .foregroundStyle(.green)
                                 if let price = dish.priceValue {
-                                    Text("Score \(dish.score)/10 für \(dish.price ?? "") — \(String(format: "%.2f", vs)) Punkte/CHF")
+                                    Text(String(localized: "dish.valueDetail \(dish.score) \(dish.price ?? "") \(vs)"))
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
@@ -135,14 +135,14 @@ struct DishDetailSheet: View {
 
                     // Review summary
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Was Gäste sagen")
+                        Text(String(localized: "dish.whatGuestsSay"))
                             .font(.headline)
 
                         if dish.sentiment == .unmentioned {
                             HStack(spacing: 8) {
                                 Image(systemName: "info.circle")
                                     .foregroundStyle(.secondary)
-                                Text("Dieses Gericht wurde in den Rezensionen nicht erwähnt.")
+                                Text(String(localized: "dish.notMentioned"))
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
@@ -163,7 +163,7 @@ struct DishDetailSheet: View {
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Fertig") { dismiss() }
+                    Button(String(localized: "dish.done")) { dismiss() }
                 }
             }
         }
@@ -187,8 +187,8 @@ struct DishDetailSheet: View {
     private func dietaryLabel(for tag: String) -> String {
         switch tag {
         case "vegan": return "Vegan"
-        case "vegetarian": return "Vegetarisch"
-        case "gluten-free": return "Glutenfrei"
+        case "vegetarian": return String(localized: "dish.dietary.vegetarian")
+        case "gluten-free": return String(localized: "dish.dietary.glutenFree")
         default: return tag
         }
     }
@@ -214,10 +214,10 @@ struct DishDetailSheet: View {
 
     private var sentimentText: String {
         switch dish.sentiment {
-        case .positive: "Durchweg positiv"
-        case .mixed: "Gemischte Meinungen"
-        case .negative: "Eher negativ"
-        case .unmentioned: "Keine Daten"
+        case .positive: String(localized: "dish.sentiment.positive")
+        case .mixed: String(localized: "dish.sentiment.mixed")
+        case .negative: String(localized: "dish.sentiment.negative")
+        case .unmentioned: String(localized: "dish.sentiment.unmentioned")
         }
     }
 

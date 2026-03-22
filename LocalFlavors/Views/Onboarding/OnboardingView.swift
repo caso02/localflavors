@@ -61,7 +61,6 @@ struct OnboardingView: View {
 
             // Animated hero
             ZStack {
-                // Background glow
                 Circle()
                     .fill(.orange.opacity(0.12))
                     .frame(width: 220, height: 220)
@@ -72,14 +71,12 @@ struct OnboardingView: View {
                     .frame(width: 280, height: 280)
                     .scaleEffect(animateContent ? 1.0 : 0.3)
 
-                // Fork & knife icon
                 Image(systemName: "fork.knife")
                     .font(.system(size: 72, weight: .light))
                     .foregroundStyle(.orange)
                     .scaleEffect(animateContent ? 1.0 : 0.3)
                     .opacity(animateContent ? 1 : 0)
 
-                // Floating stars
                 ForEach(0..<5, id: \.self) { i in
                     Image(systemName: "star.fill")
                         .font(.system(size: [14, 10, 12, 9, 11][i]))
@@ -97,15 +94,14 @@ struct OnboardingView: View {
             }
             .frame(height: 300)
 
-            // Text
             VStack(spacing: 14) {
-                Text("Finde die besten Gerichte")
+                Text(String(localized: "onboarding.welcome.title"))
                     .font(.title.bold())
                     .multilineTextAlignment(.center)
                     .opacity(animateContent ? 1 : 0)
                     .offset(y: animateContent ? 0 : 20)
 
-                Text("Local Flavors analysiert Speisekarten und zeigt dir, was andere Gäste empfehlen.")
+                Text(String(localized: "onboarding.welcome.subtitle"))
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -125,9 +121,7 @@ struct OnboardingView: View {
         VStack(spacing: 32) {
             Spacer()
 
-            // Location animation
             ZStack {
-                // Expanding radar rings
                 ForEach(0..<3, id: \.self) { i in
                     Circle()
                         .stroke(.blue.opacity(animateContent ? 0.0 : 0.3), lineWidth: 1.5)
@@ -140,7 +134,6 @@ struct OnboardingView: View {
                         )
                 }
 
-                // Static background circle
                 Circle()
                     .fill(.blue.opacity(0.08))
                     .frame(width: 200, height: 200)
@@ -151,14 +144,12 @@ struct OnboardingView: View {
                     .frame(width: 260, height: 260)
                     .scaleEffect(animateContent ? 1.0 : 0.3)
 
-                // Location pin
                 Image(systemName: "location.fill")
                     .font(.system(size: 64, weight: .light))
                     .foregroundStyle(.blue)
                     .scaleEffect(animateContent ? 1.0 : 0.3)
                     .opacity(animateContent ? 1 : 0)
 
-                // Floating restaurant markers
                 ForEach(0..<4, id: \.self) { i in
                     VStack(spacing: 2) {
                         Image(systemName: ["fork.knife", "cup.and.saucer.fill", "wineglass.fill", "takeoutbag.and.cup.and.straw.fill"][i])
@@ -168,7 +159,6 @@ struct OnboardingView: View {
                             .background(.orange, in: Circle())
                             .shadow(color: .orange.opacity(0.3), radius: 4, y: 2)
 
-                        // Pin tail
                         Triangle()
                             .fill(.orange)
                             .frame(width: 8, height: 5)
@@ -184,7 +174,6 @@ struct OnboardingView: View {
                     )
                 }
 
-                // Checkmark overlay when permission granted
                 if locationStatus == .authorizedWhenInUse || locationStatus == .authorizedAlways {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 32))
@@ -195,15 +184,14 @@ struct OnboardingView: View {
             }
             .frame(height: 300)
 
-            // Text
             VStack(spacing: 14) {
-                Text("Restaurant automatisch erkennen")
+                Text(String(localized: "onboarding.location.title"))
                     .font(.title.bold())
                     .multilineTextAlignment(.center)
                     .opacity(animateContent ? 1 : 0)
                     .offset(y: animateContent ? 0 : 20)
 
-                Text("Dein Standort wird genutzt, um das Restaurant zu erkennen, in dem du dich befindest.")
+                Text(String(localized: "onboarding.location.subtitle"))
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -211,12 +199,11 @@ struct OnboardingView: View {
                     .opacity(animateContent ? 1 : 0)
                     .offset(y: animateContent ? 0 : 15)
 
-                // Status indicator
                 if locationStatus == .authorizedWhenInUse || locationStatus == .authorizedAlways {
                     HStack(spacing: 6) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundStyle(.green)
-                        Text("Standort aktiviert")
+                        Text(String(localized: "onboarding.location.granted"))
                             .font(.subheadline.bold())
                             .foregroundStyle(.green)
                     }
@@ -233,7 +220,6 @@ struct OnboardingView: View {
         }
         .onAppear {
             locationStatus = locationManager.authorizationStatus
-            // Observe auth changes via timer (simple approach for onboarding)
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
                 let newStatus = locationManager.authorizationStatus
                 if newStatus != locationStatus {
@@ -241,7 +227,6 @@ struct OnboardingView: View {
                         locationStatus = newStatus
                     }
                 }
-                // Stop polling once we leave onboarding
                 if currentPage != 1 && newStatus != .notDetermined {
                     timer.invalidate()
                 }
@@ -255,16 +240,13 @@ struct OnboardingView: View {
         VStack(spacing: 32) {
             Spacer()
 
-            // Camera animation
             ZStack {
-                // Phone frame
                 RoundedRectangle(cornerRadius: 24)
                     .stroke(.primary.opacity(0.2), lineWidth: 2)
                     .frame(width: 180, height: 280)
                     .scaleEffect(animateContent ? 1 : 0.7)
                     .opacity(animateContent ? 1 : 0)
 
-                // Menu lines inside phone
                 VStack(alignment: .leading, spacing: 8) {
                     ForEach(0..<6, id: \.self) { i in
                         HStack(spacing: 8) {
@@ -286,7 +268,6 @@ struct OnboardingView: View {
                     }
                 }
 
-                // Scanning line
                 RoundedRectangle(cornerRadius: 1)
                     .fill(.orange)
                     .frame(width: 150, height: 2)
@@ -297,14 +278,18 @@ struct OnboardingView: View {
                         value: animateContent
                     )
 
-                // Checkmarks appearing
                 VStack(spacing: 20) {
+                    let checks = [
+                        String(localized: "onboarding.scan.check1"),
+                        String(localized: "onboarding.scan.check2"),
+                        String(localized: "onboarding.scan.check3")
+                    ]
                     ForEach(0..<3, id: \.self) { i in
                         HStack(spacing: 6) {
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundStyle(.green)
                                 .font(.system(size: 16))
-                            Text(["Gericht erkannt", "Preis gefunden", "Kategorie erkannt"][i])
+                            Text(checks[i])
                                 .font(.caption2.bold())
                                 .foregroundStyle(.primary.opacity(0.7))
                         }
@@ -320,15 +305,14 @@ struct OnboardingView: View {
             }
             .frame(height: 300)
 
-            // Text
             VStack(spacing: 14) {
-                Text("Speisekarte fotografieren")
+                Text(String(localized: "onboarding.scan.title"))
                     .font(.title.bold())
                     .multilineTextAlignment(.center)
                     .opacity(animateContent ? 1 : 0)
                     .offset(y: animateContent ? 0 : 20)
 
-                Text("Fotografiere eine oder mehrere Seiten — die KI erkennt alle Gerichte automatisch.")
+                Text(String(localized: "onboarding.scan.subtitle"))
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -342,38 +326,19 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: - Page 3: Results
+    // MARK: - Page 4: Results
 
     private var resultsPage: some View {
         VStack(spacing: 32) {
             Spacer()
 
-            // Results preview
             ZStack {
-                // Background cards
                 VStack(spacing: 10) {
-                    // Top Pick card
-                    resultCard(
-                        name: "Spare Ribs",
-                        score: 9,
-                        color: .green,
-                        delay: 0.2
-                    )
-                    resultCard(
-                        name: "Caesar Bowl",
-                        score: 8,
-                        color: .green,
-                        delay: 0.4
-                    )
-                    resultCard(
-                        name: "Quarkteigkrapfen",
-                        score: 9,
-                        color: .green,
-                        delay: 0.6
-                    )
+                    resultCard(name: "Spare Ribs", score: 9, color: .green, delay: 0.2)
+                    resultCard(name: "Caesar Bowl", score: 8, color: .green, delay: 0.4)
+                    resultCard(name: "Quarkteigkrapfen", score: 9, color: .green, delay: 0.6)
                 }
 
-                // "Top Pick" badge
                 HStack(spacing: 6) {
                     Image(systemName: "flame.fill")
                         .font(.system(size: 14))
@@ -390,7 +355,6 @@ struct OnboardingView: View {
                 .opacity(animateContent ? 1 : 0)
                 .animation(.spring(response: 0.6, dampingFraction: 0.6).delay(0.4), value: animateContent)
 
-                // Star burst
                 Image(systemName: "star.fill")
                     .font(.system(size: 20))
                     .foregroundStyle(.yellow)
@@ -398,19 +362,17 @@ struct OnboardingView: View {
                     .scaleEffect(animateContent ? 1 : 0)
                     .opacity(animateContent ? 0.8 : 0)
                     .animation(.spring(response: 0.5, dampingFraction: 0.5).delay(0.7), value: animateContent)
-
             }
             .frame(height: 300)
 
-            // Text
             VStack(spacing: 14) {
-                Text("Sofort wissen, was gut ist")
+                Text(String(localized: "onboarding.results.title"))
                     .font(.title.bold())
                     .multilineTextAlignment(.center)
                     .opacity(animateContent ? 1 : 0)
                     .offset(y: animateContent ? 0 : 20)
 
-                Text("Basierend auf hunderten Google-Bewertungen — in unter einer Minute.")
+                Text(String(localized: "onboarding.results.subtitle"))
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -428,7 +390,6 @@ struct OnboardingView: View {
 
     private func resultCard(name: String, score: Int, color: Color, delay: Double) -> some View {
         HStack(spacing: 12) {
-            // Mini score ring
             ZStack {
                 Circle()
                     .stroke(color.opacity(0.2), lineWidth: 3)
@@ -452,7 +413,7 @@ struct OnboardingView: View {
                     Image(systemName: "star.fill")
                         .font(.system(size: 8))
                         .foregroundStyle(.yellow)
-                    Text("Empfohlen")
+                    Text(String(localized: "onboarding.results.recommended"))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
@@ -477,7 +438,6 @@ struct OnboardingView: View {
 
     private var bottomControls: some View {
         VStack(spacing: 20) {
-            // Page dots
             HStack(spacing: 8) {
                 ForEach(0..<4, id: \.self) { i in
                     Circle()
@@ -487,7 +447,6 @@ struct OnboardingView: View {
                 }
             }
 
-            // Button
             if currentPage == 3 {
                 Button {
                     HapticsService.success()
@@ -495,7 +454,7 @@ struct OnboardingView: View {
                         hasSeenOnboarding = true
                     }
                 } label: {
-                    Text("Los geht's")
+                    Text(String(localized: "onboarding.button.start"))
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -504,14 +463,13 @@ struct OnboardingView: View {
                 }
                 .transition(.scale.combined(with: .opacity))
             } else if currentPage == 1 && locationStatus != .authorizedWhenInUse && locationStatus != .authorizedAlways {
-                // Location page — block "Weiter" until permission granted
                 Button {
                     locationManager.requestWhenInUseAuthorization()
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "location.fill")
                             .font(.subheadline)
-                        Text("Standort aktivieren")
+                        Text(String(localized: "onboarding.location.button"))
                             .font(.headline)
                     }
                     .foregroundStyle(.white)
@@ -526,7 +484,7 @@ struct OnboardingView: View {
                     }
                 } label: {
                     HStack(spacing: 6) {
-                        Text("Weiter")
+                        Text(String(localized: "onboarding.button.next"))
                             .font(.headline)
                         Image(systemName: "arrow.right")
                             .font(.subheadline.bold())

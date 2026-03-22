@@ -43,10 +43,10 @@ struct CameraView: View {
                         Image(systemName: "camera.fill")
                             .font(.system(size: 48))
                             .foregroundStyle(.secondary)
-                        Text("Kamerazugriff benötigt")
+                        Text(String(localized: "camera.permission.title"))
                             .font(.title2.bold())
                             .foregroundStyle(.white)
-                        Text("Öffne die Einstellungen und erlaube Local Flavors den Kamerazugriff.")
+                        Text(String(localized: "camera.permission.subtitle"))
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -72,17 +72,17 @@ struct CameraView: View {
                 appState.currentScreen = .results
             }
         }
-        .alert("Keine Internetverbindung", isPresented: $showOfflineAlert) {
-            Button("OK", role: .cancel) {}
+        .alert(String(localized: "camera.offline.title"), isPresented: $showOfflineAlert) {
+            Button(String(localized: "general.ok"), role: .cancel) {}
         } message: {
-            Text("Für die Analyse wird eine Internetverbindung benötigt. Bitte verbinde dich mit dem WLAN oder aktiviere mobile Daten.")
+            Text(String(localized: "camera.offline.message"))
         }
         .overlay(alignment: .top) {
             if !network.isConnected {
                 HStack(spacing: 6) {
                     Image(systemName: "wifi.slash")
                         .font(.caption.bold())
-                    Text("Offline")
+                    Text(String(localized: "camera.offline.banner"))
                         .font(.caption.bold())
                 }
                 .foregroundStyle(.white)

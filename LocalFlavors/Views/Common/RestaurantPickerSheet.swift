@@ -18,12 +18,11 @@ struct RestaurantPickerSheet: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                // Hint when restaurant is required
                 if showRequiredHint {
                     HStack(spacing: 8) {
                         Image(systemName: "info.circle.fill")
                             .foregroundStyle(.orange)
-                        Text("Wähle ein Restaurant um die Analyse zu starten.")
+                        Text(String(localized: "picker.hint"))
                             .font(.subheadline)
                     }
                     .padding()
@@ -31,17 +30,15 @@ struct RestaurantPickerSheet: View {
                     .background(.orange.opacity(0.1))
                 }
 
-                // Search bar
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(.secondary)
-                    TextField("Restaurant suchen...", text: $searchText)
+                    TextField(String(localized: "picker.search"), text: $searchText)
                         .textFieldStyle(.plain)
                         .onSubmit { Task { await search() } }
                     if !searchText.isEmpty {
                         Button {
                             searchText = ""
-                            // Reset to nearby when clearing search
                             if hasSearched {
                                 hasSearched = false
                                 Task { await loadNearby() }
@@ -56,49 +53,46 @@ struct RestaurantPickerSheet: View {
                 .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 10))
                 .padding()
 
-                // Results
                 Group {
                     if isLoading {
                         Spacer()
-                        ProgressView("Suche...")
+                        ProgressView(String(localized: "picker.searching"))
                         Spacer()
                     } else if nearbyRestaurants.isEmpty && hasSearched {
                         Spacer()
                         ContentUnavailableView(
-                            "Keine Restaurants gefunden",
+                            String(localized: "picker.noResults"),
                             systemImage: "mappin.slash",
-                            description: Text("Versuche einen anderen Suchbegriff.")
+                            description: Text(String(localized: "picker.noResults.hint"))
                         )
                         Spacer()
                     } else if nearbyRestaurants.isEmpty {
                         Spacer()
                         VStack(spacing: 8) {
                             ProgressView()
-                            Text("Restaurants in der Nähe werden geladen...")
+                            Text(String(localized: "picker.loading"))
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
                     } else {
                         List {
-                            // Currently detected restaurant always at top
                             if let current = currentRestaurant {
                                 Section {
                                     restaurantRow(current, isCurrent: true)
                                 } header: {
-                                    Label("Erkannt", systemImage: "location.fill")
+                                    Label(String(localized: "picker.detected"), systemImage: "location.fill")
                                         .font(.caption.bold())
                                         .foregroundStyle(.green)
                                 }
                             }
 
-                            // Nearby / search results (excluding current to avoid duplicate)
                             Section {
                                 ForEach(filteredNearbyRestaurants) { restaurant in
                                     restaurantRow(restaurant, isCurrent: false)
                                 }
                             } header: {
-                                Text(hasSearched ? "Suchergebnisse" : "In der Nähe")
+                                Text(hasSearched ? String(localized: "picker.searchResults") : String(localized: "picker.nearby"))
                                     .font(.caption.bold())
                             }
                         }
@@ -106,11 +100,11 @@ struct RestaurantPickerSheet: View {
                     }
                 }
             }
-            .navigationTitle("Restaurant wählen")
+            .navigationTitle(String(localized: "picker.title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Abbrechen") { dismiss() }
+                    Button(String(localized: "picker.cancel")) { dismiss() }
                 }
             }
             .task {
@@ -120,7 +114,6 @@ struct RestaurantPickerSheet: View {
         .presentationDetents([.medium, .large])
     }
 
-    /// Nearby restaurants excluding the current one (to avoid duplicate)
     private var filteredNearbyRestaurants: [Restaurant] {
         guard let currentId = currentRestaurant?.id else { return nearbyRestaurants }
         return nearbyRestaurants.filter { $0.id != currentId }

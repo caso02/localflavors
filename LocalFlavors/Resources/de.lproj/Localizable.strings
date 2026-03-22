@@ -1,0 +1,112 @@
+/* Onboarding */
+"onboarding.welcome.title" = "Finde die besten Gerichte";
+"onboarding.welcome.subtitle" = "Local Flavors analysiert Speisekarten und zeigt dir, was andere Gäste empfehlen.";
+"onboarding.location.title" = "Restaurant automatisch erkennen";
+"onboarding.location.subtitle" = "Dein Standort wird genutzt, um das Restaurant zu erkennen, in dem du dich befindest.";
+"onboarding.location.granted" = "Standort aktiviert";
+"onboarding.location.button" = "Standort aktivieren";
+"onboarding.scan.title" = "Speisekarte fotografieren";
+"onboarding.scan.subtitle" = "Fotografiere eine oder mehrere Seiten — die KI erkennt alle Gerichte automatisch.";
+"onboarding.scan.check1" = "Gericht erkannt";
+"onboarding.scan.check2" = "Preis gefunden";
+"onboarding.scan.check3" = "Kategorie erkannt";
+"onboarding.results.title" = "Sofort wissen, was gut ist";
+"onboarding.results.subtitle" = "Basierend auf hunderten Google-Bewertungen — in unter einer Minute.";
+"onboarding.results.recommended" = "Empfohlen";
+"onboarding.button.next" = "Weiter";
+"onboarding.button.start" = "Los geht's";
+
+/* Camera */
+"camera.permission.title" = "Kamerazugriff benötigt";
+"camera.permission.subtitle" = "Öffne die Einstellungen und erlaube Local Flavors den Kamerazugriff.";
+"camera.offline.title" = "Keine Internetverbindung";
+"camera.offline.message" = "Für die Analyse wird eine Internetverbindung benötigt. Bitte verbinde dich mit dem WLAN oder aktiviere mobile Daten.";
+"camera.offline.banner" = "Offline";
+
+/* Restaurant Picker */
+"picker.title" = "Restaurant wählen";
+"picker.search" = "Restaurant suchen...";
+"picker.searching" = "Suche...";
+"picker.noResults" = "Keine Restaurants gefunden";
+"picker.noResults.hint" = "Versuche einen anderen Suchbegriff.";
+"picker.loading" = "Restaurants in der Nähe werden geladen...";
+"picker.detected" = "Erkannt";
+"picker.searchResults" = "Suchergebnisse";
+"picker.nearby" = "In der Nähe";
+"picker.cancel" = "Abbrechen";
+"picker.hint" = "Wähle ein Restaurant um die Analyse zu starten.";
+
+/* Analysis Loading */
+"loading.ocr.title" = "Speisekarte wird erkannt";
+"loading.ocr.subtitle" = "Gerichte und Preise werden aus dem Foto extrahiert";
+"loading.reviews.title" = "Bewertungen werden durchsucht";
+"loading.reviews.subtitle" = "Google Reviews und Online-Quellen werden analysiert";
+"loading.scoring.title" = "Empfehlungen werden erstellt";
+"loading.scoring.subtitle" = "Gerichte werden bewertet und sortiert";
+
+/* Results Overview */
+"results.reviews %lld" = "%lld Bewertungen";
+"results.dishes" = "Gerichte";
+"results.recommendations" = "Empfehlungen";
+"results.section.topPicks" = "Unsere Empfehlungen";
+"results.section.bestValue" = "Top Preis-Leistung";
+"results.section.avoid" = "Lieber nicht";
+"results.section.allDishes" = "Alle Gerichte";
+"results.section.unmentioned %lld" = "Nicht erwähnt (%lld)";
+"results.filter.all" = "Alle";
+"results.filter.vegetarian" = "Vegetarisch";
+"results.filter.vegan" = "Vegan";
+"results.filter.glutenFree" = "Glutenfrei";
+"results.course.bestStarters" = "Beste Vorspeisen";
+"results.course.bestMains" = "Beste Hauptgerichte";
+"results.course.bestDesserts" = "Beste Desserts";
+"results.course.bestOther" = "Empfehlungen";
+"results.course.starters" = "Vorspeisen";
+"results.course.mains" = "Hauptspeisen";
+"results.course.desserts" = "Desserts";
+"results.course.drinks" = "Getränke";
+"results.course.sides" = "Beilagen";
+"results.course.menus" = "Menüs";
+"results.course.other" = "Sonstiges";
+
+/* Dish Card */
+"dish.guestsRecommend %@" = "%@+ Gäste empfehlen dies";
+"dish.negativeMentions %@" = "%@+ negative Erwähnungen";
+"dish.mentioned %@" = "%@+ erwähnt";
+"dish.topScore" = "Top Wert";
+
+/* Dish Detail */
+"dish.outOf10" = "von 10";
+"dish.guestsMention %@" = "%@+ Gäste erwähnen dies";
+"dish.goodValue" = "Gutes Preis-Leistungs-Verhältnis";
+"dish.valueDetail %lld %@ %lf" = "Score %lld/10 für %@ — %.2lf Punkte/CHF";
+"dish.whatGuestsSay" = "Was Gäste sagen";
+"dish.notMentioned" = "Dieses Gericht wurde in den Rezensionen nicht erwähnt.";
+"dish.done" = "Fertig";
+"dish.dietary.vegetarian" = "Vegetarisch";
+"dish.dietary.glutenFree" = "Glutenfrei";
+"dish.sentiment.positive" = "Durchweg positiv";
+"dish.sentiment.mixed" = "Gemischte Meinungen";
+"dish.sentiment.negative" = "Eher negativ";
+"dish.sentiment.unmentioned" = "Keine Daten";
+
+/* Recommendation Badge */
+"badge.mustTry" = "Must Try";
+"badge.solid" = "Solide";
+"badge.avoid" = "Meiden";
+"badge.noData" = "Keine Daten";
+
+/* Scan History */
+"history.title" = "Letzte Scans";
+"history.close" = "Schliessen";
+"history.deleteAll" = "Alle löschen";
+"history.empty.title" = "Noch keine Scans";
+"history.empty.subtitle" = "Deine gescannten Speisekarten erscheinen hier.";
+"history.dishes %lld" = "%lld Gerichte";
+
+/* Error */
+"error.title" = "Etwas ist schiefgelaufen";
+"error.retry" = "Erneut versuchen";
+
+/* General */
+"general.ok" = "OK";

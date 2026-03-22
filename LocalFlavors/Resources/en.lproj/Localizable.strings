@@ -1,0 +1,112 @@
+/* Onboarding */
+"onboarding.welcome.title" = "Find the best dishes";
+"onboarding.welcome.subtitle" = "Local Flavors analyzes menus and shows you what other guests recommend.";
+"onboarding.location.title" = "Automatic restaurant detection";
+"onboarding.location.subtitle" = "Your location is used to detect which restaurant you're in.";
+"onboarding.location.granted" = "Location enabled";
+"onboarding.location.button" = "Enable location";
+"onboarding.scan.title" = "Take a photo of the menu";
+"onboarding.scan.subtitle" = "Photograph one or more pages — the AI recognizes all dishes automatically.";
+"onboarding.scan.check1" = "Dish recognized";
+"onboarding.scan.check2" = "Price found";
+"onboarding.scan.check3" = "Category detected";
+"onboarding.results.title" = "Instantly know what's good";
+"onboarding.results.subtitle" = "Based on hundreds of Google reviews — in under a minute.";
+"onboarding.results.recommended" = "Recommended";
+"onboarding.button.next" = "Next";
+"onboarding.button.start" = "Let's go";
+
+/* Camera */
+"camera.permission.title" = "Camera access required";
+"camera.permission.subtitle" = "Open Settings and allow Local Flavors to access your camera.";
+"camera.offline.title" = "No internet connection";
+"camera.offline.message" = "An internet connection is required for the analysis. Please connect to Wi-Fi or enable mobile data.";
+"camera.offline.banner" = "Offline";
+
+/* Restaurant Picker */
+"picker.title" = "Choose restaurant";
+"picker.search" = "Search restaurant...";
+"picker.searching" = "Searching...";
+"picker.noResults" = "No restaurants found";
+"picker.noResults.hint" = "Try a different search term.";
+"picker.loading" = "Loading nearby restaurants...";
+"picker.detected" = "Detected";
+"picker.searchResults" = "Search results";
+"picker.nearby" = "Nearby";
+"picker.cancel" = "Cancel";
+"picker.hint" = "Choose a restaurant to start the analysis.";
+
+/* Analysis Loading */
+"loading.ocr.title" = "Recognizing menu";
+"loading.ocr.subtitle" = "Extracting dishes and prices from the photo";
+"loading.reviews.title" = "Searching reviews";
+"loading.reviews.subtitle" = "Analyzing Google Reviews and online sources";
+"loading.scoring.title" = "Creating recommendations";
+"loading.scoring.subtitle" = "Rating and sorting dishes";
+
+/* Results Overview */
+"results.reviews %lld" = "%lld reviews";
+"results.dishes" = "Dishes";
+"results.recommendations" = "Recommendations";
+"results.section.topPicks" = "Our recommendations";
+"results.section.bestValue" = "Best value";
+"results.section.avoid" = "Better skip";
+"results.section.allDishes" = "All dishes";
+"results.section.unmentioned %lld" = "Not mentioned (%lld)";
+"results.filter.all" = "All";
+"results.filter.vegetarian" = "Vegetarian";
+"results.filter.vegan" = "Vegan";
+"results.filter.glutenFree" = "Gluten-free";
+"results.course.bestStarters" = "Best starters";
+"results.course.bestMains" = "Best main courses";
+"results.course.bestDesserts" = "Best desserts";
+"results.course.bestOther" = "Recommendations";
+"results.course.starters" = "Starters";
+"results.course.mains" = "Main courses";
+"results.course.desserts" = "Desserts";
+"results.course.drinks" = "Drinks";
+"results.course.sides" = "Sides";
+"results.course.menus" = "Menus";
+"results.course.other" = "Other";
+
+/* Dish Card */
+"dish.guestsRecommend %@" = "%@+ guests recommend this";
+"dish.negativeMentions %@" = "%@+ negative mentions";
+"dish.mentioned %@" = "%@+ mentioned";
+"dish.topScore" = "Top score";
+
+/* Dish Detail */
+"dish.outOf10" = "out of 10";
+"dish.guestsMention %@" = "%@+ guests mention this";
+"dish.goodValue" = "Good value for money";
+"dish.valueDetail %lld %@ %lf" = "Score %lld/10 for %@ — %.2lf points/CHF";
+"dish.whatGuestsSay" = "What guests say";
+"dish.notMentioned" = "This dish was not mentioned in the reviews.";
+"dish.done" = "Done";
+"dish.dietary.vegetarian" = "Vegetarian";
+"dish.dietary.glutenFree" = "Gluten-free";
+"dish.sentiment.positive" = "Consistently positive";
+"dish.sentiment.mixed" = "Mixed opinions";
+"dish.sentiment.negative" = "Rather negative";
+"dish.sentiment.unmentioned" = "No data";
+
+/* Recommendation Badge */
+"badge.mustTry" = "Must Try";
+"badge.solid" = "Solid";
+"badge.avoid" = "Avoid";
+"badge.noData" = "No data";
+
+/* Scan History */
+"history.title" = "Recent scans";
+"history.close" = "Close";
+"history.deleteAll" = "Delete all";
+"history.empty.title" = "No scans yet";
+"history.empty.subtitle" = "Your scanned menus will appear here.";
+"history.dishes %lld" = "%lld dishes";
+
+/* Error */
+"error.title" = "Something went wrong";
+"error.retry" = "Try again";
+
+/* General */
+"general.ok" = "OK";
